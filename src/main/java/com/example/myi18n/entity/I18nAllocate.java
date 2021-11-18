@@ -1,5 +1,7 @@
 package com.example.myi18n.entity;
 
+import com.example.myi18n.common.contants.I18nContants;
+
 public class I18nAllocate {
     private Integer pid;
 
@@ -9,7 +11,7 @@ public class I18nAllocate {
 
     private String label;
 
-    private Object langs;
+    private String langs;
 
     private Integer toWeb;
 
@@ -45,11 +47,11 @@ public class I18nAllocate {
         this.label = label == null ? null : label.trim();
     }
 
-    public Object getLangs() {
+    public String getLangs() {
         return langs;
     }
 
-    public void setLangs(Object langs) {
+    public void setLangs(String langs) {
         this.langs = langs;
     }
 
@@ -59,5 +61,14 @@ public class I18nAllocate {
 
     public void setToWeb(Integer toWeb) {
         this.toWeb = toWeb;
+    }
+
+
+    public final boolean equalsCombination(String param){
+        if (null == param){
+            return false;
+        }
+        String strSplit = this.module + I18nContants.SPOT + this.label;
+        return strSplit.equals(param);
     }
 }

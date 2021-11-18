@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.example.myi18n.entity.Products;
 import com.example.myi18n.entity.example.ProductsExample;
+import com.example.myi18n.entity.vo.ProductsVo;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -29,4 +30,6 @@ public interface ProductsMapper {
     int updateByPrimaryKeySelective(Products record);
 
     int updateByPrimaryKey(Products record);
+
+    ProductsVo getKeyId(@Param("pid") Integer pid);
 }

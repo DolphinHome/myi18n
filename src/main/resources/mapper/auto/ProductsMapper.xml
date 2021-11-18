@@ -208,4 +208,23 @@
       category_id = #{categoryId,jdbcType=INTEGER}
     where pid = #{pid,jdbcType=INTEGER}
   </update>
+
+  <resultMap id="ProductsVoMap" type="com.example.myi18n.entity.vo.ProductsVo">
+    <id column="pid" property="pid" jdbcType="INTEGER" />
+    <result column="pname" property="pname" jdbcType="VARCHAR" />
+    <result column="price" property="price" jdbcType="DOUBLE" />
+    <result column="flag" property="flag" jdbcType="VARCHAR" />
+    <result column="category_id" property="categoryId" jdbcType="INTEGER" />
+    <association property="categorys" javaType="com.example.myi18n.entity.Category">
+      <id property="cid" column="cid" />
+      <result property="cname" column="cname"/>
+    </association>
+  </resultMap>
+  <select id="getKeyId" parameterType="integer" resultMap="ProductsVoMap">
+    select
+      *
+    from products
+    left join category on cid = category_id
+    where products.pid = #{pid,jdbcType=INTEGER}
+  </select>
 </mapper>

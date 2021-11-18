@@ -1,5 +1,10 @@
 package com.example.myi18n.entity;
 
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+
+@AllArgsConstructor
+@NoArgsConstructor
 public class Category {
     private Integer cid;
 

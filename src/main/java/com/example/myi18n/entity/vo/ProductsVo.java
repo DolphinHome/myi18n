@@ -1,9 +1,12 @@
-package com.example.myi18n.entity;
+package com.example.myi18n.entity.vo;
 
+import com.example.myi18n.entity.Category;
 import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 
 @AllArgsConstructor
-public class Products {
+@NoArgsConstructor
+public class ProductsVo {
     private Integer pid;
 
     private String pname;
@@ -13,6 +16,9 @@ public class Products {
     private String flag;
 
     private Integer categoryId;
+
+
+    private Category categorys;
 
     public Integer getPid() {
         return pid;
@@ -52,5 +58,13 @@ public class Products {
 
     public void setCategoryId(Integer categoryId) {
         this.categoryId = categoryId;
+    }
+
+    public Category getCategorys() {
+        return categorys;
+    }
+
+    public void setCategorys(Category category) {
+        this.categorys = category;
     }
 }

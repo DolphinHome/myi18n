@@ -9,6 +9,6 @@ create table category
 alter table category
     add primary key (cid);
 
-INSERT INTO myi18n.category (cid, cname) VALUES (1, '家电');
-INSERT INTO myi18n.category (cid, cname) VALUES (2, '服饰');
-INSERT INTO myi18n.category (cid, cname) VALUES (3, '化妆品');
+INSERT INTO myi18n.category (cid, cname) VALUES (1, '${category.88888}');
+INSERT INTO myi18n.category (cid, cname) VALUES (2, '${category.99999}');
+INSERT INTO myi18n.category (cid, cname) VALUES (3, '${category.77777}');
