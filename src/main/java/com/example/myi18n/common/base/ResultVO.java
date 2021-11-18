@@ -37,4 +37,10 @@ public class ResultVO<T> {
         this.data = data;
     }
 
+    public ResultVO(Integer code, String msg , T data) {
+        this.code = code;
+        this.msg = msg;
+        this.data = data;
+    }
+
 }

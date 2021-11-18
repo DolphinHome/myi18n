@@ -54,7 +54,11 @@ public class TestController extends BaseController {
     }
 
 
-
+    @RequestMapping("exception")
+    public ResultVO exception(){
+        //异常处理国际化问题
+        return new ResultVO(500,"${exception.@1}",null);
+    }
 
 
 
