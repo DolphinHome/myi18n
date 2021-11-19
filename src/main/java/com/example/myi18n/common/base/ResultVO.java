@@ -38,6 +38,7 @@ public class ResultVO<T> {
         this.data = data;
     }
 
+
     public ResultVO(String msg) {
         this.code = ResultCode.SUCCESS.getCode();
         this.msg = msg;
@@ -56,4 +57,13 @@ public class ResultVO<T> {
         this.data = data;
     }
 
+    public static ResultVO failure(Exception e){
+        return new ResultVO(ResultCode.ERROR.getCode(),e.getMessage(),null);
+    }
+
+    public ResultVO(int code, String msg, T data) {
+        this.code = code;
+        this.msg = msg;
+        this.data = data;
+    }
 }
