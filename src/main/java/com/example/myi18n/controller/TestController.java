@@ -2,6 +2,7 @@ package com.example.myi18n.controller;
 
 import com.example.myi18n.common.base.BaseController;
 import com.example.myi18n.common.base.ResultVO;
+import com.example.myi18n.common.enums.ExceptionEnums;
 import com.example.myi18n.entity.Category;
 import com.example.myi18n.entity.Products;
 import com.example.myi18n.entity.vo.ProductsVo;
@@ -12,9 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+
 
 @RestController
 @RequestMapping("Test")
@@ -57,13 +57,20 @@ public class TestController extends BaseController {
     @RequestMapping("exception")
     public ResultVO exception(){
         //异常处理国际化问题
-        return new ResultVO(500,"${exception.@1}",null);
+        return new ResultVO(500, ExceptionEnums.SERVER_EXCEPTION,null);
     }
 
 
+    @RequestMapping("response")
+    public String response(){
+        return ExceptionEnums.SERVER_EXCEPTION.getCode();
+    }
 
-
-
+    @RequestMapping("exceptionMsg")
+    public String exceptionMsg()  {
+        categoryService.exceptionMsg();
+        return "WWW";
+    }
 
 
 }

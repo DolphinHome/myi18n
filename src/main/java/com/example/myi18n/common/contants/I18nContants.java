@@ -6,6 +6,6 @@ public final class I18nContants {
     public final  static  String  ZH_CN = "CN";
     public final  static  String  EN_US = "US";
     public final  static  String  EN_GB = "GB";
-    public final  static  String  SPOT = ".";
+
 
 }

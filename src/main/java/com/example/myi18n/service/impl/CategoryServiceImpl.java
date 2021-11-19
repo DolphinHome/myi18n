@@ -18,5 +18,12 @@ public class CategoryServiceImpl implements CategoryService {
         return categoryMapper.selectByExample(null);
     }
 
+    public void exceptionMsg()  {
+        try {
+            int i = 2/0;
+        }catch (RuntimeException e){
+            e.printStackTrace();
+        }
+    }
 
 }

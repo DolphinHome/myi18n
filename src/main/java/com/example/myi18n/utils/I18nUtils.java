@@ -7,6 +7,7 @@ import org.apache.commons.lang3.StringUtils;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 import static com.example.myi18n.common.contants.I18nContants.DEFAULT_LANGUAGE;
 
@@ -42,6 +43,9 @@ public class I18nUtils {
      * @return
      */
     public static List<String> findParams(String str) {
+        if (null == str){
+            return null;
+        }
         List<String> params = new ArrayList<>();
         // 转化为二进制
         char[] chars = str.toCharArray();
@@ -74,6 +78,9 @@ public class I18nUtils {
      * @return
      */
     public static StringBuilder dataProcess(String lang, StringBuilder data, List<I18nAllocate> languages, List<String> params) {
+        if (null ==params){
+            return data;
+        }
         // 循环数据
         for (I18nAllocate language : languages) {
             // 有配置语言，非空对象，为后端使用的标签
@@ -83,9 +90,9 @@ public class I18nUtils {
                     if (language.equalsCombination(param)) {
                         // 假如当前环境非默认语种，判断当前语种是否已经配置，如果没配置或为空，使用默认语种数据
                         if (!I18nContants.DEFAULT_LANGUAGE.equals(lang) && JsonUtils.toMap(language.getLangs()).containsKey(lang) && StringUtils.isNotBlank((String) JsonUtils.toMap(language.getLangs()).get(lang))) {
-                            data.replace(0, data.length(), replaceRegex(data.toString(), param, StrUtil.replaceBlank((String) JsonUtils.toMap(language.getLangs()).get(lang))));
+                            data.replace(0, data.length(), replaceRegex(data.toString(), param, StrUtil.nullIsEmpty((String) JsonUtils.toMap(language.getLangs()).get(lang))));
                         } else {
-                            data.replace(0, data.length(), replaceRegex(data.toString(), param, StrUtil.replaceBlank((String) JsonUtils.toMap(language.getLangs()).get(DEFAULT_LANGUAGE))));
+                            data.replace(0, data.length(), replaceRegex(data.toString(), param, StrUtil.nullIsEmpty((String) JsonUtils.toMap(language.getLangs()).get(DEFAULT_LANGUAGE))));
                         }
                     }
                 }
@@ -105,10 +112,6 @@ public class I18nUtils {
         String regex = "\\$\\{"+key+"\\}";
         return source.replaceAll(regex, value);
     }
-
-
-
-
 
 
 }

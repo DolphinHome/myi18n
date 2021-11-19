@@ -3,9 +3,9 @@ spring:
     name: MyI18n
   datasource:
     driverClassName: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/myi18n?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=GMT%2B8&allowPublicKeyRetrieval=true
+    url: jdbc:mysql://sh-cdb-7yrw31k6.sql.tencentcdb.com:59480/myi18n?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=GMT%2B8&allowPublicKeyRetrieval=true
     username: root
-    password: 123456
+    password: Tuan191018
   redis:
     host: localhost
     port: 6379

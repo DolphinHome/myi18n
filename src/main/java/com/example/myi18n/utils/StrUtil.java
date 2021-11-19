@@ -141,6 +141,17 @@ public class StrUtil {
         return dest;
     }
 
+
+    public static String nullIsEmpty(String str){
+        if (str != null) {
+            str = str.trim();
+            if ("null".equals(str)){
+                return "";
+            }
+        }
+        return str;
+    }
+
     /**
      * 去掉字符串中的空格、回车、换行符、制表符、斜杠、点、冒号
      * @param str

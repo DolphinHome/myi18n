@@ -1,6 +1,7 @@
 package com.example.myi18n.entity;
 
 import com.example.myi18n.common.contants.I18nContants;
+import com.example.myi18n.common.contants.StrinfContants;
 
 public class I18nAllocate {
     private Integer pid;
@@ -68,7 +69,7 @@ public class I18nAllocate {
         if (null == param){
             return false;
         }
-        String strSplit = this.module + I18nContants.SPOT + this.label;
+        String strSplit = this.module + StrinfContants.SPOT + this.label;
         return strSplit.equals(param);
     }
 }

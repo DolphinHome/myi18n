@@ -1,6 +1,7 @@
 package com.example.myi18n.common.base;
 
 
+import com.example.myi18n.common.enums.ExceptionEnums;
 import com.example.myi18n.common.enums.ResultCode;
 import lombok.Data;
 
@@ -37,9 +38,21 @@ public class ResultVO<T> {
         this.data = data;
     }
 
+    public ResultVO(String msg) {
+        this.code = ResultCode.SUCCESS.getCode();
+        this.msg = msg;
+        this.data = null;
+    }
+
     public ResultVO(Integer code, String msg , T data) {
         this.code = code;
         this.msg = msg;
+        this.data = data;
+    }
+
+    public ResultVO(Integer code, ExceptionEnums msg , T data) {
+        this.code = code;
+        this.msg = msg.getCode();
         this.data = data;
     }
 
