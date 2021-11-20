@@ -1,12 +1,15 @@
 package com.example.myi18n.controller;
 
 import com.example.myi18n.common.base.BaseController;
+import com.example.myi18n.common.base.I18nTemplateContainer;
 import com.example.myi18n.common.base.ResultVO;
 import com.example.myi18n.common.enums.ExceptionEnums;
 import com.example.myi18n.entity.Category;
+import com.example.myi18n.entity.I18nAllocate;
 import com.example.myi18n.entity.Products;
 import com.example.myi18n.entity.vo.ProductsVo;
 import com.example.myi18n.service.CategoryService;
+import com.example.myi18n.service.I18nAllocateService;
 import com.example.myi18n.service.ProductsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,6 +26,10 @@ public class TestController extends BaseController {
     private CategoryService categoryService;
     @Autowired
     private ProductsService productsService;
+    @Autowired
+    private I18nTemplateContainer i18nTemplateContainer;
+    @Autowired
+    private I18nAllocateService i18nAllocateService;
 
     @RequestMapping("test")
     public ResultVO insertCategory(){
@@ -72,5 +79,16 @@ public class TestController extends BaseController {
         return "错了错了";
     }
 
+    @RequestMapping("getI18nBag")
+    public ResultVO getI18nBag(String key){
+        String value = i18nTemplateContainer.getValue(key);
+        return ResultVO.success(value);
+    }
+
+    @RequestMapping("getMobelBag")
+    public ResultVO getMobelBag(String model){
+        List<I18nAllocate> mobelBag = i18nAllocateService.getMobelBag(model);
+        return ResultVO.success(mobelBag);
+    }
 
 }

@@ -40,17 +40,27 @@ public class I18nAllocateServiceImpl implements I18nAllocateService {
         I18nAllocateExample example = new I18nAllocateExample();
         String[] split = key.split(StrinfContants.SPLIT);
         if (split.length > 1){
-            example.createCriteria().andModuleEqualTo(split[0]);
-            example.createCriteria().andLabelEqualTo(split[1]);
+            example.createCriteria().andModuleEqualTo(split[0]).andLabelEqualTo(split[1]);
         }else{
             example.createCriteria().andLabelEqualTo(split[0]);
         }
 
         List<I18nAllocate> i18nAllocates = i18nAllocateMapper.selectByExample(example);
-        if (null != i18nAllocates){
+        if (null != i18nAllocates && i18nAllocates.size()>0){
             return i18nAllocates.get(0);
         }
         return null;
+    }
+
+    @Override
+    public List<I18nAllocate> getMobelBag(String model) {
+        if (null == model){
+            return null;
+        }
+        I18nAllocateExample example = new I18nAllocateExample();
+        example.createCriteria().andModuleEqualTo(model);
+        List<I18nAllocate> i18nAllocates = i18nAllocateMapper.selectByExample(example);
+        return i18nAllocates;
     }
 
 }

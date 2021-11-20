@@ -5,7 +5,6 @@ import com.example.myi18n.common.contants.RedisKeyContants;
 import com.example.myi18n.entity.I18nAllocate;
 import com.example.myi18n.service.I18nAllocateService;
 import com.example.myi18n.service.redis.RedisService;
-import com.example.myi18n.service.redis.impl.RedisServiceImpl;
 import com.example.myi18n.utils.I18nUtils;
 import com.example.myi18n.utils.JsonUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,9 +32,6 @@ public class I18nTemplateContainer {
             return null;
         }
         List<String> params = I18nUtils.findParams(key);
-        if (null == params || params.size() == 0){
-            return null;
-        }
         if (null!=params && params.size()>=1){
             key= params.get(0);
         }
