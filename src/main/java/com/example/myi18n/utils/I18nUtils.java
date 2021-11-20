@@ -1,6 +1,7 @@
 package com.example.myi18n.utils;
 
 import com.example.myi18n.common.contants.I18nContants;
+import com.example.myi18n.common.contants.StrinfContants;
 import com.example.myi18n.entity.I18nAllocate;
 import org.apache.commons.lang3.StringUtils;
 
@@ -99,6 +100,15 @@ public class I18nUtils {
             }
         }
         return data;
+    }
+
+    public static String getLanguageValue(String lang,String languages){
+        // 假如当前环境非默认语种，判断当前语种是否已经配置，如果没配置或为空，使用默认语种数据
+        if (!I18nContants.DEFAULT_LANGUAGE.equals(lang) && JsonUtils.toMap(languages).containsKey(lang) && StringUtils.isNotBlank((String) JsonUtils.toMap(languages).get(lang))) {
+            return  StrUtil.nullIsEmpty((String) JsonUtils.toMap(languages).get(lang));
+        } else {
+            return  StrUtil.nullIsEmpty((String) JsonUtils.toMap(languages).get(I18nContants.DEFAULT_LANGUAGE));
+        }
     }
 
     /**

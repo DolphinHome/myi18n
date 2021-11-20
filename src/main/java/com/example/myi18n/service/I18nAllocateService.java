@@ -12,4 +12,5 @@ public interface I18nAllocateService {
 
     List<I18nAllocate> buildLangToJava();
 
+    I18nAllocate getI18nValue(String key);
 }

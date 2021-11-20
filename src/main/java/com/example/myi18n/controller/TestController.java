@@ -63,13 +63,13 @@ public class TestController extends BaseController {
 
     @RequestMapping("response")
     public String response(){
-        return ExceptionEnums.SERVER_EXCEPTION.getCode();
+        return ExceptionEnums.SERVER_EXCEPTION.getSign();
     }
 
     @RequestMapping("exceptionMsg")
     public String exceptionMsg()  {
         categoryService.exceptionMsg();
-        return "WWW";
+        return "错了错了";
     }
 
 
