@@ -30,17 +30,17 @@ Java 前后端国际化设计方案（大型项目适用）
 
 #### 项目展示
 
-####1.  后端内容国际化
+#### 1.  后端内容国际化
 ![查询商品信息英文](https://images.gitee.com/uploads/images/2021/1121/205206_1ff9b8cb_5562811.png "屏幕截图.png")
 ![查询商品信息默认](https://images.gitee.com/uploads/images/2021/1121/205250_5af804ab_5562811.png "屏幕截图.png")
 
 
-####2.  前端请求国际化数据
+#### 2.  前端请求国际化数据
 ![前端查询模块中国际化数据](https://images.gitee.com/uploads/images/2021/1121/205527_cbf44ffa_5562811.png "屏幕截图.png")
 ![前端单个标识符查询](https://images.gitee.com/uploads/images/2021/1121/205743_0a6d9689_5562811.png "屏幕截图.png")
 
 
-####3.  异常国际化
+#### 3.  异常国际化
 ![异常国际化处理后](https://images.gitee.com/uploads/images/2021/1121/210203_6530b100_5562811.png "屏幕截图.png")
 ![异常国际化使用](https://images.gitee.com/uploads/images/2021/1121/210055_657f2e53_5562811.png "屏幕截图.png")
 ![异常枚举标识符](https://images.gitee.com/uploads/images/2021/1121/210255_3c0d1a71_5562811.png "屏幕截图.png")
