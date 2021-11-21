@@ -13,7 +13,6 @@ import org.springframework.http.server.ServerHttpResponse;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
 
-import java.util.List;
 
 
 @RestControllerAdvice(basePackages = {"com.example.myi18n.controller"}) // 注意哦，这里要加上需要扫描的包

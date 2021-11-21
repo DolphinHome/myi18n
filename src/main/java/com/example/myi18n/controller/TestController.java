@@ -34,8 +34,8 @@ public class TestController extends BaseController {
     @RequestMapping("test")
     public ResultVO insertCategory(){
         List<Products> list = new ArrayList<>();
-        Products products1 =new Products(1,"${category.99999}",1.2,"1",1);
-        Products products2 =new Products(1,"${category.88888}",1.2,"1",1);
+        Products products1 =new Products(1,"${category.#9999}",1.2,"1",1);
+        Products products2 =new Products(1,"${category.#8888}",1.2,"1",1);
         list.add(products1);
         list.add(products2);
         return new ResultVO(list);
