@@ -1,13 +1,15 @@
 package com.example.myi18n.controller;
 
 import com.example.myi18n.common.base.BaseController;
-import com.example.myi18n.common.base.I18nTemplateContainer;
+import com.example.myi18n.common.base.ConverMapper;
+import com.example.myi18n.common.component.I18nTemplateContainer;
 import com.example.myi18n.common.base.ResultVO;
 import com.example.myi18n.common.enums.ExceptionEnums;
 import com.example.myi18n.entity.Category;
 import com.example.myi18n.entity.I18nAllocate;
 import com.example.myi18n.entity.Products;
-import com.example.myi18n.entity.vo.ProductsVo;
+import com.example.myi18n.entity.vo.I18nAllocateVO;
+import com.example.myi18n.entity.vo.ProductsVO;
 import com.example.myi18n.service.CategoryService;
 import com.example.myi18n.service.I18nAllocateService;
 import com.example.myi18n.service.ProductsService;
@@ -50,14 +52,16 @@ public class TestController extends BaseController {
     @RequestMapping("getProductsList")
     public ResultVO getProductsList(){
         List<Products> products = productsService.selectList();
-        return new ResultVO(products);
+        List<ProductsVO> productsVOS = ConverMapper.INSTANCE.cproductsToListProductsVO(products);
+        return new ResultVO(productsVOS);
     }
 
 
     @RequestMapping("getProductsKey")
     public ResultVO getProductsKey(Integer pid){
-        ProductsVo products = productsService.getProductKeyId(pid);
-        return new ResultVO(products);
+        Products products = productsService.getProductKeyId(pid);
+        ProductsVO productsVO = ConverMapper.INSTANCE.cProductsToProductsVO(products);
+        return new ResultVO(productsVO);
     }
 
 
@@ -69,26 +73,30 @@ public class TestController extends BaseController {
 
 
     @RequestMapping("response")
-    public String response(){
-        return ExceptionEnums.SERVER_EXCEPTION.getSign();
+    public ResultVO response(){
+        return ResultVO.success(ExceptionEnums.SERVER_EXCEPTION.getSign());
     }
 
     @RequestMapping("exceptionMsg")
-    public String exceptionMsg()  {
+    public ResultVO exceptionMsg()  {
+        //自动捕捉异常并国际化处理
         categoryService.exceptionMsg();
-        return "错了错了";
+        return ResultVO.failure("错了错了");
     }
 
     @RequestMapping("getI18nBag")
     public ResultVO getI18nBag(String key){
+        //前端访问国际化标识，返回数据
         String value = i18nTemplateContainer.getValue(key);
         return ResultVO.success(value);
     }
 
     @RequestMapping("getMobelBag")
     public ResultVO getMobelBag(String model){
+        //前端获取模块中所有国际化的数据
         List<I18nAllocate> mobelBag = i18nAllocateService.getMobelBag(model);
-        return ResultVO.success(mobelBag);
+        List<I18nAllocateVO> i18nAllocateVOS = ConverMapper.INSTANCE.cI18nAllocateToI18nAllocateVo(mobelBag);
+        return ResultVO.success(i18nAllocateVOS);
     }
 
 }

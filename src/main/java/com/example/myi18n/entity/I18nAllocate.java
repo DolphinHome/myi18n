@@ -2,7 +2,11 @@ package com.example.myi18n.entity;
 
 import com.example.myi18n.common.contants.I18nContants;
 import com.example.myi18n.common.contants.StrinfContants;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 
+@NoArgsConstructor
+@AllArgsConstructor
 public class I18nAllocate {
     private Integer pid;
 

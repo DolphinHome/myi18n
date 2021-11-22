@@ -209,7 +209,7 @@
     where pid = #{pid,jdbcType=INTEGER}
   </update>
 
-  <resultMap id="ProductsVoMap" type="com.example.myi18n.entity.vo.ProductsVo">
+  <resultMap id="ProductsVoMap" type="com.example.myi18n.entity.Products">
     <id column="pid" property="pid" jdbcType="INTEGER" />
     <result column="pname" property="pname" jdbcType="VARCHAR" />
     <result column="price" property="price" jdbcType="DOUBLE" />
@@ -226,5 +226,13 @@
     from products
     left join category on cid = category_id
     where products.pid = #{pid,jdbcType=INTEGER}
+  </select>
+
+
+  <select id="selectAllList"  resultMap="ProductsVoMap">
+    select
+      *
+    from products
+           left join category on cid = category_id
   </select>
 </mapper>

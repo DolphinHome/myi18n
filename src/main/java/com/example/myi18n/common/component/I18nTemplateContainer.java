@@ -1,4 +1,4 @@
-package com.example.myi18n.common.base;
+package com.example.myi18n.common.component;
 
 import com.example.myi18n.common.contants.I18nContants;
 import com.example.myi18n.common.contants.RedisKeyContants;

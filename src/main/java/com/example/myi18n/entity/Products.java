@@ -1,7 +1,10 @@
 package com.example.myi18n.entity;
 
 import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.Transient;
 
+@NoArgsConstructor
 @AllArgsConstructor
 public class Products {
     private Integer pid;
@@ -13,6 +16,18 @@ public class Products {
     private String flag;
 
     private Integer categoryId;
+
+    @Transient
+    private Category categorys;
+
+
+    public Category getCategorys() {
+        return categorys;
+    }
+
+    public void setCategorys(Category categorys) {
+        this.categorys = categorys;
+    }
 
     public Integer getPid() {
         return pid;
@@ -51,6 +66,14 @@ public class Products {
     }
 
     public void setCategoryId(Integer categoryId) {
+        this.categoryId = categoryId;
+    }
+
+    public Products(Integer pid, String pname, Double price, String flag, Integer categoryId) {
+        this.pid = pid;
+        this.pname = pname;
+        this.price = price;
+        this.flag = flag;
         this.categoryId = categoryId;
     }
 }

@@ -2,10 +2,10 @@ package com.example.myi18n.dao;
 
 import java.util.List;
 
+import com.example.myi18n.entity.Category;
 import com.example.myi18n.entity.Products;
 import com.example.myi18n.entity.example.ProductsExample;
-import com.example.myi18n.entity.vo.ProductsVo;
-import org.apache.ibatis.annotations.Mapper;
+import com.example.myi18n.entity.vo.ProductsVO;
 import org.apache.ibatis.annotations.Param;
 
 public interface ProductsMapper {
@@ -31,5 +31,7 @@ public interface ProductsMapper {
 
     int updateByPrimaryKey(Products record);
 
-    ProductsVo getKeyId(@Param("pid") Integer pid);
+    Products getKeyId(@Param("pid") Integer pid);
+
+    List<Products> selectAllList();
 }

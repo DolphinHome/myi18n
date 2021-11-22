@@ -65,6 +65,7 @@ public class ResultVO<T> {
     public static ResultVO failure(String msg){
         return new ResultVO(ResultCode.ERROR.getCode(),msg,null);
     }
+
     public static ResultVO failure(){
         return new ResultVO(ResultCode.ERROR,null);
     }

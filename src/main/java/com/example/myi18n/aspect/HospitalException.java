@@ -1,9 +1,8 @@
 package com.example.myi18n.aspect;
 
-import com.example.myi18n.common.base.I18nTemplateContainer;
+import com.example.myi18n.common.component.I18nTemplateContainer;
 import com.example.myi18n.common.base.ResultVO;
 import com.example.myi18n.common.base.RunCustomException;
-import com.example.myi18n.common.enums.ResultCode;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.MethodArgumentNotValidException;

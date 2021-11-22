@@ -2,7 +2,7 @@ package com.example.myi18n.service.impl;
 
 import com.example.myi18n.dao.ProductsMapper;
 import com.example.myi18n.entity.Products;
-import com.example.myi18n.entity.vo.ProductsVo;
+import com.example.myi18n.entity.vo.ProductsVO;
 import com.example.myi18n.service.ProductsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,10 +17,10 @@ public class ProductsServiceImpl implements ProductsService {
 
 
     public List<Products> selectList(){
-        return productsMapper.selectByExample(null);
+        return productsMapper.selectAllList();
     }
 
-    public ProductsVo getProductKeyId(Integer pid){
+    public Products getProductKeyId(Integer pid){
         return productsMapper.getKeyId(pid);
     }
 

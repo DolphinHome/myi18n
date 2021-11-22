@@ -6,8 +6,7 @@ import lombok.NoArgsConstructor;
 
 @AllArgsConstructor
 @NoArgsConstructor
-public class ProductsVo {
-    private Integer pid;
+public class ProductsVO {
 
     private String pname;
 
@@ -15,18 +14,10 @@ public class ProductsVo {
 
     private String flag;
 
-    private Integer categoryId;
+
+    private CategoryVO categorys;
 
 
-    private Category categorys;
-
-    public Integer getPid() {
-        return pid;
-    }
-
-    public void setPid(Integer pid) {
-        this.pid = pid;
-    }
 
     public String getPname() {
         return pname;
@@ -52,19 +43,12 @@ public class ProductsVo {
         this.flag = flag == null ? null : flag.trim();
     }
 
-    public Integer getCategoryId() {
-        return categoryId;
-    }
 
-    public void setCategoryId(Integer categoryId) {
-        this.categoryId = categoryId;
-    }
-
-    public Category getCategorys() {
+    public CategoryVO getCategorys() {
         return categorys;
     }
 
-    public void setCategorys(Category category) {
-        this.categorys = category;
+    public void setCategorys(CategoryVO categorys) {
+        this.categorys = categorys;
     }
 }
