@@ -39,6 +39,8 @@ public class ResultVO<T> {
     }
 
 
+
+
     public ResultVO(String msg) {
         this.code = ResultCode.SUCCESS.getCode();
         this.msg = msg;
@@ -53,12 +55,25 @@ public class ResultVO<T> {
 
     public ResultVO(Integer code, ExceptionEnums msg , T data) {
         this.code = code;
-        this.msg = msg.getCode();
+        this.msg = msg.getSign();
         this.data = data;
     }
 
     public static ResultVO failure(Exception e){
         return new ResultVO(ResultCode.ERROR.getCode(),e.getMessage(),null);
+    }
+    public static ResultVO failure(String msg){
+        return new ResultVO(ResultCode.ERROR.getCode(),msg,null);
+    }
+    public static ResultVO failure(){
+        return new ResultVO(ResultCode.ERROR,null);
+    }
+    public static ResultVO success(Object data){
+        return new ResultVO(ResultCode.SUCCESS,data);
+    }
+
+    public static ResultVO builder(Object data){
+        return new ResultVO(ResultCode.SUCCESS,data);
     }
 
     public ResultVO(int code, String msg, T data) {

@@ -1,12 +1,15 @@
 package com.example.myi18n.controller;
 
 import com.example.myi18n.common.base.BaseController;
+import com.example.myi18n.common.base.I18nTemplateContainer;
 import com.example.myi18n.common.base.ResultVO;
 import com.example.myi18n.common.enums.ExceptionEnums;
 import com.example.myi18n.entity.Category;
+import com.example.myi18n.entity.I18nAllocate;
 import com.example.myi18n.entity.Products;
 import com.example.myi18n.entity.vo.ProductsVo;
 import com.example.myi18n.service.CategoryService;
+import com.example.myi18n.service.I18nAllocateService;
 import com.example.myi18n.service.ProductsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,12 +26,16 @@ public class TestController extends BaseController {
     private CategoryService categoryService;
     @Autowired
     private ProductsService productsService;
+    @Autowired
+    private I18nTemplateContainer i18nTemplateContainer;
+    @Autowired
+    private I18nAllocateService i18nAllocateService;
 
     @RequestMapping("test")
     public ResultVO insertCategory(){
         List<Products> list = new ArrayList<>();
-        Products products1 =new Products(1,"${category.99999}",1.2,"1",1);
-        Products products2 =new Products(1,"${category.88888}",1.2,"1",1);
+        Products products1 =new Products(1,"${category.#9999}",1.2,"1",1);
+        Products products2 =new Products(1,"${category.#8888}",1.2,"1",1);
         list.add(products1);
         list.add(products2);
         return new ResultVO(list);
@@ -63,14 +70,25 @@ public class TestController extends BaseController {
 
     @RequestMapping("response")
     public String response(){
-        return ExceptionEnums.SERVER_EXCEPTION.getCode();
+        return ExceptionEnums.SERVER_EXCEPTION.getSign();
     }
 
     @RequestMapping("exceptionMsg")
     public String exceptionMsg()  {
         categoryService.exceptionMsg();
-        return "WWW";
+        return "错了错了";
     }
 
+    @RequestMapping("getI18nBag")
+    public ResultVO getI18nBag(String key){
+        String value = i18nTemplateContainer.getValue(key);
+        return ResultVO.success(value);
+    }
+
+    @RequestMapping("getMobelBag")
+    public ResultVO getMobelBag(String model){
+        List<I18nAllocate> mobelBag = i18nAllocateService.getMobelBag(model);
+        return ResultVO.success(mobelBag);
+    }
 
 }
